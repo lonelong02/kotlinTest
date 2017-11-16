@@ -8,6 +8,8 @@ import android.view.View
 import android.view.animation.LinearInterpolator
 
 /**
+ * 模仿空气净化器
+ * 待完善：扇叶渐变长、灰尘漂浮动画
  * Created by long on 2017/11/15.
  */
 class AirView : View {

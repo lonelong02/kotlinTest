@@ -11,9 +11,11 @@ import com.wesai.kotlin.activities.AirPurgeActivity
 import com.wesai.kotlin.bean.AbstractImpl
 import com.wesai.kotlin.bean.Person
 import com.wesai.kotlin.bean.Student
+import com.wesai.kotlin.test.StaticClass
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,13 +25,18 @@ class MainActivity : AppCompatActivity() {
 //            range();
 //            newClass();
 //            testArray();
-            extendObject()
+//            extendObject()
 //            interClass();
-//            testOther();
+            testOther();
 //            testRun();
-
+            testStatic();
 
         })
+    }
+
+    fun testStatic() {
+        var testJava = StaticClass.Tag
+        StaticClass.fun1()
     }
 
     /*点击事件*/
@@ -143,12 +150,38 @@ class MainActivity : AppCompatActivity() {
             if (value == 0) return
             print(value);
         })
+        gc();
+
+        /*""" 多行输入符*/
+        var temStr = """
+            1
+           '\n"
+            \t"
+            5
+            """;
+        println(temStr);
+
     }
 
-    fun interClass() {
+    fun testWhen(tem: Any): Any {
+
+        /*as 类型转换 ;as? 安全的类型转换 ;若类型不对时，会返回null*/
+        var str = tem as? String;
+        /*when进行多分支判断，类似switch，但是比switch强大*/
+        return when (tem) {
+            is Int -> tem.toString(); /*is 类型；is是类型判断*/
+            is String -> tem;
+            in 1..100 -> "[1-100]"; /* in 值1..值2 ;范围操作符*/
+            else -> "no no no。。。"
+        }
 
 
     }
+
+    fun gc() {
+        println("------------------------------------------------------------------")
+    }
+
 
     /*扩展Student类 */
     fun Student.say() {
