@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.wesai.kotlin.MainActivity">
+    android:orientation="vertical">
 
     <Button
         android:id="@+id/but1"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_margin="5dp"
-        android:text="Hello World!" />
+        android:onClick="myOnClick"
+        android:text="拍照权限"
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/but2"
@@ -19,7 +19,7 @@
         android:layout_height="40dp"
         android:layout_margin="5dp"
         android:onClick="myOnClick"
-        android:text="空气净化器模仿"
+        android:text="电话权限"
         android:textAllCaps="false" />
 
     <Button
@@ -28,9 +28,8 @@
         android:layout_height="40dp"
         android:layout_margin="5dp"
         android:onClick="myOnClick"
-        android:text="权限申请"
+        android:text="SD卡读取权限"
         android:textAllCaps="false" />
-
 
     <Button
         android:id="@+id/but4"
@@ -38,6 +37,6 @@
         android:layout_height="40dp"
         android:layout_margin="5dp"
         android:onClick="myOnClick"
-        android:text="GreenDao数据库"
+        android:text="短信权限"
         android:textAllCaps="false" />
 </LinearLayout>

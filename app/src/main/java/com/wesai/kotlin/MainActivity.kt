@@ -8,11 +8,15 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.wesai.kotlin.activities.AirPurgeActivity
+import com.wesai.kotlin.activities.PermissionActivity
 import com.wesai.kotlin.bean.AbstractImpl
 import com.wesai.kotlin.bean.Person
 import com.wesai.kotlin.bean.Student
+import com.wesai.kotlin.greenDao.GreenDaoFactory
+import com.wesai.kotlin.greenDao.GreenJava
 import com.wesai.kotlin.test.StaticClass
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.concurrent.Executors
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,12 +31,13 @@ class MainActivity : AppCompatActivity() {
 //            testArray();
 //            extendObject()
 //            interClass();
-            testOther();
+//            testOther();
 //            testRun();
-            testStatic();
-
+//            testStatic();
+            testParams(like = "喜欢", name = "long")
         })
     }
+
 
     fun testStatic() {
         var testJava = StaticClass.Tag
@@ -45,8 +50,76 @@ class MainActivity : AppCompatActivity() {
             R.id.but2 -> {
                 startActivity(Intent(this, AirPurgeActivity::class.java))
             }
+            R.id.but3 -> {
+                startActivity(Intent(this, PermissionActivity::class.java))
+            }
+            R.id.but4 -> {
+                testDao();
+            }
         }
 
+    }
+
+    /*线程池*/
+    fun testThreadPool() {
+        /**
+         * ThreadPoolExecutor线程池参数说明：
+         *corePoolSize：核心线程个数，除非设置allowCoreThreadTimeOut=true,否则在空闲的时候也不会销毁
+         * maximumPoolSize：线程池的最大线程数；当线程池的所有的线程数量大于最大线程数时，后续任务就要排队
+         *keepAliveTime：线程最大空闲时长；非核心线程（或allowCoreThreadTimeOut=true的核心线程）空闲时间超过这个时间后便会被收回
+         * TimeUnit：超时单位；TimeUnit. SECONDS（s）秒；
+         *BlockingQueue<Runnable> workQueue：缓存任务队列；将需要执行的任务放置该队列中
+         * ThreadFactory threadFactory：线程工厂接口，只有一个new Thread(Runnable r)方法，可为线程池创建新线程
+         *
+         * */
+
+        /*只存在多个核心线程的线程池；*/
+        /*new ThreadPoolExecutor(nThreads, nThreads,
+                                      0L, TimeUnit.MILLISECONDS,
+                                      new LinkedBlockingQueue<Runnable>())
+                                      */
+        var fixPool = Executors.newFixedThreadPool(4);
+
+
+        /*只存在一个核心线程的线程池；任务顺序执行，不存在多线程问题*/
+        /*
+        * new ThreadPoolExecutor(1, 1,
+                                    0L, TimeUnit.MILLISECONDS,
+                                    new LinkedBlockingQueue<Runnable>())*/
+        var singlePool = Executors.newSingleThreadExecutor();
+
+
+        /*不存在核心线程；存在无线多的非核心线程；*/
+        /*
+        * new ThreadPoolExecutor(0, Integer.MAX_VALUE,
+                                      60L, TimeUnit.SECONDS,
+                                      new SynchronousQueue<Runnable>());
+                                      */
+        var cachePool = Executors.newCachedThreadPool();
+
+        /*存在指定数量的核心线程与无线多的非核心线程*/
+        /*   public ScheduledThreadPoolExecutor(int corePoolSize) {
+        super(corePoolSize, Integer.MAX_VALUE,
+              DEFAULT_KEEPALIVE_MILLIS, MILLISECONDS,
+              new DelayedWorkQueue());
+    }
+        * */
+        var schedulePool = Executors.newScheduledThreadPool(4);
+
+
+    }
+
+    /*test GreenDao数据库*/
+    fun testDao() {
+
+        var bean = GreenJava();
+        bean.name = "name" + System.nanoTime()
+        bean.phone = "18310153825"
+        bean.address = "北京"
+        GreenDaoFactory.insert(bean);
+        bean.phone = "110";
+        GreenDaoFactory.update(bean)
+        log(GreenDaoFactory.loadAll()?.toString());
     }
 
     fun testRun() {
@@ -384,5 +457,10 @@ class MainActivity : AppCompatActivity() {
         (mapTem as HashMap).put("value", 1);
         var hashMap = hashMapOf<String, Boolean>();
         hashMap.put("value", false);
+    }
+
+    /*函数传递值*/
+    fun testParams(name: String, like: String, age: Int = 10) {
+        println("name=$name like=$like  age = $age")
     }
 }
