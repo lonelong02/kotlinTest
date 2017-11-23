@@ -40,4 +40,22 @@
         android:onClick="myOnClick"
         android:text="GreenDao数据库"
         android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/but5"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="5dp"
+        android:onClick="myOnClick"
+        android:text="RxJava2"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/but6"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="5dp"
+        android:onClick="myOnClick"
+        android:text="CoordinatorLayout"
+        android:textAllCaps="false" />
 </LinearLayout>

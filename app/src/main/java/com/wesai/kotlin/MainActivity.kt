@@ -8,7 +8,9 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.wesai.kotlin.activities.AirPurgeActivity
+import com.wesai.kotlin.activities.CoordinatorLayoutActivity
 import com.wesai.kotlin.activities.PermissionActivity
+import com.wesai.kotlin.activities.RxJava2Activity
 import com.wesai.kotlin.bean.AbstractImpl
 import com.wesai.kotlin.bean.Person
 import com.wesai.kotlin.bean.Student
@@ -56,6 +58,13 @@ class MainActivity : AppCompatActivity() {
             R.id.but4 -> {
                 testDao();
             }
+            R.id.but5 -> {
+                startActivity(Intent(this, RxJava2Activity::class.java))
+            }
+            R.id.but6 -> {
+                startActivity(Intent(this, CoordinatorLayoutActivity::class.java))
+            }
+
         }
 
     }

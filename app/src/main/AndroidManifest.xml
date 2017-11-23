@@ -20,6 +20,12 @@
         <activity android:name=".activities.EmptyActivity"></activity>
         <activity android:name=".activities.AirPurgeActivity"></activity>
         <activity android:name=".activities.PermissionActivity"></activity>
+        <activity android:name=".activities.RxJava2Activity" />
+
+        <activity
+            android:name=".activities.CoordinatorLayoutActivity"
+            android:theme="@style/NoTitleAppTheme" />
+        <!--android:theme="@style/Theme.AppCompat.NoActionBar"-->
     </application>
 
 </manifest>
