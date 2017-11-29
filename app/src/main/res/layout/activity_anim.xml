@@ -43,6 +43,15 @@
     </android.support.v7.widget.Toolbar>
 
 
+    <com.long.common.viewpager.CommonViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:background="#ff0000"
+        android:layout_height="120dp">
+
+    </com.long.common.viewpager.CommonViewPager>
+
+
     <Button
         android:id="@+id/startAnim"
         android:layout_width="match_parent"

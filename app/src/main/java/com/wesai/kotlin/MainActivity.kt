@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
                 sopHix()
             }
             R.id.but8 -> {
-                startActivity(Intent(this, AnimActivity::class.java))
+                startActivity(Intent(this, AnimAndViewsActivity::class.java))
             }
 
 

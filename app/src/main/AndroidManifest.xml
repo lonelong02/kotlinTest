@@ -33,7 +33,7 @@
             android:name=".activities.CoordinatorLayoutActivity"
             android:theme="@style/NoTitleAppTheme" />
         <activity
-            android:name=".activities.AnimActivity"
+            android:name=".activities.AnimAndViewsActivity"
             android:theme="@style/NoTitleAppTheme" />
         <!--android:theme="@style/Theme.AppCompat.NoActionBar"-->
 
