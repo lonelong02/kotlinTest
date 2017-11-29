@@ -2,23 +2,59 @@ package com.wesai.kotlin
 
 import android.app.Activity
 import android.app.Application
+import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
+import com.taobao.sophix.PatchStatus
+import com.taobao.sophix.SophixManager
 
 /**
  * Created by long on 2017/11/20.
  */
 class AppApplication() : Application() {
+    var tag = "AppApplicationDebug";
 
     companion object {
         var instance: AppApplication? = null;
+    }
+
+    override fun attachBaseContext(base: Context?) {
+        SophixManager.getInstance().setContext(this).setAppVersion(getAppVersion()).setAesKey("").setEnableDebug(true)
+                .setPatchLoadStatusStub { mode, code, info, handlePatchVersion ->
+                    // 补丁加载回调通知
+                    if (code == PatchStatus.CODE_LOAD_SUCCESS) {
+                        // 表明补丁加载成功
+                        log("表明补丁加载成功");
+                    } else if (code == PatchStatus.CODE_LOAD_RELAUNCH) {
+                        // 表明新补丁生效需要重启. 开发者可提示用户或者强制重启;
+                        // 建议: 用户可以监听进入后台事件, 然后调用killProcessSafely自杀，以此加快应用补丁，详见1.3.2.3
+                        log("表明新补丁生效需要重启. 开发者可提示用户或者强制重启;");
+                    } else {
+                        // 其它错误信息, 查看PatchStatus类说明
+                        log("其它错误信息, 查看PatchStatus类说明");
+                    }
+
+                }.initialize();
+        super.attachBaseContext(base)
+    }
+
+    fun getAppVersion(): String {
+        var appVersion: String
+        try {
+            appVersion = this.packageManager.getPackageInfo(this.packageName, 0).versionName
+        } catch (e: Exception) {
+            appVersion = "1.0.0"
+        }
+
+        return appVersion;
     }
 
     var count: Int = 0;
     override fun onCreate() {
         log("onCreate");
         super.onCreate()
+        SophixManager.getInstance().queryAndLoadNewPatch();
         instance = this;
         countActivity();
     }
@@ -35,7 +71,7 @@ class AppApplication() : Application() {
     }
 
     fun log(str: String) {
-        Log.e("AppApplication", str);
+        Log.e(tag, str);
     }
 
     /*在API-14中被引入*/
@@ -55,21 +91,27 @@ class AppApplication() : Application() {
         registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
             override fun onActivityPaused(activity: Activity?) {
             }
+
             override fun onActivityResumed(activity: Activity?) {
             }
+
             override fun onActivityStarted(activity: Activity?) {
                 count++;
                 log("activity:size=" + count)
             }
+
             override fun onActivityStopped(activity: Activity?) {
                 count--;
                 log("activity:size=" + count)
                 /*count<=0;表示当前进程已经进入后台进程*/
             }
+
             override fun onActivityDestroyed(activity: Activity?) {
             }
+
             override fun onActivitySaveInstanceState(activity: Activity?, outState: Bundle?) {
             }
+
             override fun onActivityCreated(activity: Activity?, savedInstanceState: Bundle?) {
             }
 

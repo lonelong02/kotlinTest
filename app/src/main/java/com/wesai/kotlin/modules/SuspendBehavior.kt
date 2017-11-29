@@ -10,15 +10,13 @@ import com.wesai.kotlin.R
 /**
  * Created by long on 2017/11/23.
  */
-class SuspendBehavior() : CoordinatorLayout.Behavior<View>() {
-
+class SuspendBehavior : CoordinatorLayout.Behavior<View> {
     var defHeight: Float = 0.0f;
 
-    constructor(context: Context) : this(context, null) {
-
+    constructor() : super() {
     }
 
-    constructor(context: Context, att: AttributeSet?) : this() {
+    constructor(context: Context, att: AttributeSet?) : super(context, att) {
         defHeight = context.resources.getDimension(R.dimen.toolbar_height)
     }
 

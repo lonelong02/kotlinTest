@@ -9,11 +9,11 @@
     </style>
 
 
-
     <style name="NoTitleAppTheme" parent="AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -22,5 +22,16 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <style name="myToolbar">
+        <!--修改字体大小-->
+        <item name="android:textSize">14sp</item>
+        <!---->
+        <item name="android:actionMenuTextColor">#000000</item>
+    </style>
+    <style name="mySubToolbar" parent="myToolbar">
+        <item name="android:textSize">12sp</item>
+    </style>
 
 </resources>

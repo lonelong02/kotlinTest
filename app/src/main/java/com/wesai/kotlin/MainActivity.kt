@@ -7,10 +7,7 @@ import android.util.ArraySet
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import com.wesai.kotlin.activities.AirPurgeActivity
-import com.wesai.kotlin.activities.CoordinatorLayoutActivity
-import com.wesai.kotlin.activities.PermissionActivity
-import com.wesai.kotlin.activities.RxJava2Activity
+import com.wesai.kotlin.activities.*
 import com.wesai.kotlin.bean.AbstractImpl
 import com.wesai.kotlin.bean.Person
 import com.wesai.kotlin.bean.Student
@@ -36,8 +33,16 @@ class MainActivity : AppCompatActivity() {
 //            testOther();
 //            testRun();
 //            testStatic();
-            testParams(like = "喜欢", name = "long")
+//            testParams(like = "喜欢", name = "long")
+//            scrollTest();
         })
+    }
+
+    /**
+     * scrollBy测试
+     */
+    fun scrollTest() {
+        but7.scrollBy(10, -10);
     }
 
 
@@ -65,8 +70,22 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this, CoordinatorLayoutActivity::class.java))
             }
 
+            R.id.but7 -> {
+                sopHix()
+            }
+            R.id.but8 -> {
+                startActivity(Intent(this, AnimActivity::class.java))
+            }
+
+
         }
 
+    }
+
+    fun sopHix() {
+        var msg = "I am ok";
+//        var msg = "I am debug";
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
     /*线程池*/
@@ -456,7 +475,7 @@ class MainActivity : AppCompatActivity() {
 
         /*声明一个Set集合*/
         var setTem = setOf<String>();
-        (setTem as ArraySet).add("newRow");
+        (setTem as ArraySet<String>).add("newRow");
         var arraySet = hashSetOf<String>();
         arraySet.add("first");
 

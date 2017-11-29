@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:foreground="#88000000"
     android:orientation="vertical"
     tools:context="com.wesai.kotlin.MainActivity">
 
@@ -57,5 +58,24 @@
         android:layout_margin="5dp"
         android:onClick="myOnClick"
         android:text="CoordinatorLayout"
+        android:textAllCaps="false" />
+
+
+    <Button
+        android:id="@+id/but7"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="5dp"
+        android:onClick="myOnClick"
+        android:text="阿里Sophix热修复"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/but8"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="5dp"
+        android:onClick="myOnClick"
+        android:text="动画"
         android:textAllCaps="false" />
 </LinearLayout>
