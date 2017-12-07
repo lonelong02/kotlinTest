@@ -31,7 +31,6 @@ class AnimAndViewsActivity : BaseActivity() {
             list.add("line$i")
         }
         viewPager.setData(list, object : TypeCall<String>() {
-
             override fun onBind(view: View?, mData: String?) {
                 if (view is TextView) {
                     view.setText(mData)
@@ -39,12 +38,10 @@ class AnimAndViewsActivity : BaseActivity() {
                     view.gravity = Gravity.CENTER
                 }
             }
-
             override fun getView(): View {
                 var view = TextView(this@AnimAndViewsActivity);
                 return view
             }
-
 
 
         })

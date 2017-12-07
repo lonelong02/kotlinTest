@@ -16,6 +16,4 @@ abstract class TypeCall<T> {
      * 绑定数据
      */
     abstract fun onBind(view: View?, mData: T?);
-
-
 }

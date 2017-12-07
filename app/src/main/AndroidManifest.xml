@@ -6,6 +6,9 @@
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+
+    <!--悬浮框权限-->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"></uses-permission>
     <!-- 外部存储读权限，调试工具加载本地补丁需要 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -28,6 +31,7 @@
         <activity android:name=".activities.AirPurgeActivity"></activity>
         <activity android:name=".activities.PermissionActivity"></activity>
         <activity android:name=".activities.RxJava2Activity" />
+        <activity android:name=".mvp.MvpActivity" />
 
         <activity
             android:name=".activities.CoordinatorLayoutActivity"
@@ -37,6 +41,16 @@
             android:theme="@style/NoTitleAppTheme" />
         <!--android:theme="@style/Theme.AppCompat.NoActionBar"-->
 
+        <activity
+            android:name=".activities.NestedScrollActivity"
+            android:theme="@style/NoTitleAppTheme" />
+
+        <activity
+            android:name=".activities.BottomSheetBehaviorActivity"
+            android:launchMode="singleInstance"
+            android:theme="@style/NoTitleAppTheme" />
+
+        <service android:name=".services.SuspendService"></service>
 
         <meta-data
             android:name="com.taobao.android.hotfix.IDSECRET"

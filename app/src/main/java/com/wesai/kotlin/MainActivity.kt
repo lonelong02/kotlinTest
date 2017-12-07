@@ -1,11 +1,19 @@
 package com.wesai.kotlin
 
+import android.app.ActivityOptions
+import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
+import android.support.v4.app.ActivityOptionsCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.ArraySet
 import android.util.Log
+import android.view.Gravity
 import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import com.wesai.kotlin.activities.*
 import com.wesai.kotlin.bean.AbstractImpl
@@ -13,6 +21,8 @@ import com.wesai.kotlin.bean.Person
 import com.wesai.kotlin.bean.Student
 import com.wesai.kotlin.greenDao.GreenDaoFactory
 import com.wesai.kotlin.greenDao.GreenJava
+import com.wesai.kotlin.mvp.MvpActivity
+import com.wesai.kotlin.services.SuspendService
 import com.wesai.kotlin.test.StaticClass
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.Executors
@@ -27,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "计算为：" + sun(1, 2), Toast.LENGTH_LONG).show();
 //            range();
 //            newClass();
-//            testArray();
+            testArray();
 //            extendObject()
 //            interClass();
 //            testOther();
@@ -51,14 +61,24 @@ class MainActivity : AppCompatActivity() {
         StaticClass.fun1()
     }
 
-    /*点击事件*/
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+/*点击事件*/
     fun myOnClick(view: View) {
         when (view.id) {
             R.id.but2 -> {
                 startActivity(Intent(this, AirPurgeActivity::class.java))
             }
             R.id.but3 -> {
-                startActivity(Intent(this, PermissionActivity::class.java))
+//                startActivity(Intent(this, PermissionActivity::class.java))
+                //转成动画
+                /*转场动画-》从指定大小变大*/
+                startActivity(Intent(this, PermissionActivity::class.java), ActivityOptionsCompat.makeScaleUpAnimation(view, 0, 0, 500, 500).toBundle())
+
+                /*共享元素动画*/
+                view.transitionName = "shareString"
+                startActivity(Intent(this, PermissionActivity::class.java), ActivityOptions.makeSceneTransitionAnimation(this, view, "shareString").toBundle())
+
+
             }
             R.id.but4 -> {
                 testDao();
@@ -67,7 +87,9 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this, RxJava2Activity::class.java))
             }
             R.id.but6 -> {
-                startActivity(Intent(this, CoordinatorLayoutActivity::class.java))
+//                startActivity(Intent(this, CoordinatorLayoutActivity::class.java))
+//                startActivity(Intent(this, BottomSheetBehaviorActivity::class.java))
+                startActivity(Intent(this, NestedScrollActivity::class.java))
             }
 
             R.id.but7 -> {
@@ -76,10 +98,45 @@ class MainActivity : AppCompatActivity() {
             R.id.but8 -> {
                 startActivity(Intent(this, AnimAndViewsActivity::class.java))
             }
-
+            R.id.but10 -> {
+                startService(Intent(this, SuspendService::class.java));
+//                alter();
+            }
+            R.id.but12 -> {
+                startActivity(Intent(this, MvpActivity::class.java))
+            }
 
         }
 
+    }
+
+    /**
+     * 弹出框
+     */
+    fun alter() {
+        var winService = getSystemService(Context.WINDOW_SERVICE) as WindowManager;
+        var view = View(this);
+        view.setBackgroundColor(Color.GREEN);
+
+        var params = WindowManager.LayoutParams();
+        /*TYPE_TOAST：不需要权限，但是在部分手机上有问题；TYPE_SYSTEM_ALERT需求权限，且在23之后需要动态的申请权限*/
+//        params.type = WindowManager.LayoutParams.TYPE_TOAST
+        params.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT
+
+        /*设置各种属性：FLAG_NOT_FOCUSABLE悬浮所有的上面，可以继续操作其他的应用或视图*/
+        params.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+
+        /*位置与宽高*/
+        params.gravity = Gravity.LEFT or Gravity.TOP;
+        params.x = 100
+        params.y = 100
+        params.width = 300
+        params.height = 400
+        view.setOnClickListener { view ->
+            Toast.makeText(applicationContext, "点击悬浮框", Toast.LENGTH_LONG).show();
+        }
+        //添加显示
+        winService.addView(view, params);
     }
 
     fun sopHix() {
@@ -448,6 +505,7 @@ class MainActivity : AppCompatActivity() {
         /* Int类型数组声明*/
         var arrInt: IntArray = intArrayOf(10, 3, 6, 2, 7);
 
+
         log("长度：" + arrFloat.size.toString());
 
         /*for循环   break可以跳出循环 */
@@ -460,12 +518,21 @@ class MainActivity : AppCompatActivity() {
             log("数组下标取值=${arrInt[i]}");
         }
 
+        arrInt.forEach { value ->
+            log("forEach数组值=$value")
+            /*不可以使用break跳出循环*/
+        }
+        /*for循环   break可以跳出循环 */
+        for (value in arrInt) {
+            log("数组值=$value");
+        }
+
     }
 
     fun testList() {
 
         /* 声明一个List对象*/
-        var list = listOf<Int>();
+        var list = listOf<Int>(1, 2, 3);
         /*listOf声明出来的对象是只读的，若要操作，需要转换为其他类型*/
         (list as ArrayList).add(1)
         /*可变集合*/
@@ -474,7 +541,7 @@ class MainActivity : AppCompatActivity() {
 
 
         /*声明一个Set集合*/
-        var setTem = setOf<String>();
+        var setTem = setOf<String>("a", "b", "c");
         (setTem as ArraySet<String>).add("newRow");
         var arraySet = hashSetOf<String>();
         arraySet.add("first");
@@ -485,6 +552,11 @@ class MainActivity : AppCompatActivity() {
         (mapTem as HashMap).put("value", 1);
         var hashMap = hashMapOf<String, Boolean>();
         hashMap.put("value", false);
+
+
+        for ((k, v) in hashMap) {
+
+        }
     }
 
     /*函数传递值*/

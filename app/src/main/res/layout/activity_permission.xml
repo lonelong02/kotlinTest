@@ -11,7 +11,8 @@
         android:layout_margin="5dp"
         android:onClick="myOnClick"
         android:text="拍照权限"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        android:transitionName="shareString" />
 
     <Button
         android:id="@+id/but2"
