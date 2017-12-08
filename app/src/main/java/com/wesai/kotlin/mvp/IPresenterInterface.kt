@@ -21,7 +21,7 @@ abstract class IPresenterInterface<V : IViewInterface> {
     /**
      * 保存数据
      */
-    fun onSaveInstanceState(bundle: Bundle) {
+    fun onSaveInstanceState(bundle: Bundle?) {
 
     }
 
