@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity
 /**
  * Created by long on 2017/12/7.
  */
-abstract class BaseMVPActivity<V : IViewInterface, P : IPresenterInterface<V>> : AppCompatActivity(), IViewInterface {
+abstract class IBaseMVPActivity<V : IViewInterface, P : IPresenterInterface<V>> : AppCompatActivity() {
     lateinit var presenter: P;
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.activity_mvp.*
 /**
  * Created by long on 2017/12/7.
  */
-class MvpActivity : BaseMVPActivity<IViewImpl1, PresenterImpl1>(), IViewImpl1 {
+class MvpActivity : IBaseMVPActivity<IViewImpl1, PresenterImpl1>(), IViewImpl1 {
     override fun setViewData(data: String) {
         dataView.setText(data)
     }
