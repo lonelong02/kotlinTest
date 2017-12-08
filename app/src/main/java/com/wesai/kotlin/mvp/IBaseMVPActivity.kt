@@ -7,7 +7,8 @@ import android.support.v7.app.AppCompatActivity
  * Created by long on 2017/12/7.
  */
 abstract class IBaseMVPActivity<V : IViewInterface, P : IPresenterInterface<V>> : AppCompatActivity() {
-    lateinit var presenter: P;
+    var presenter: P? = null;
+    val pFactory = BasePresenterFactory.getFactory<IViewInterface, IPresenterInterface<IViewInterface>>(javaClass) as IPresenterFactory<V, P>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,5 +22,11 @@ abstract class IBaseMVPActivity<V : IViewInterface, P : IPresenterInterface<V>> 
         presenter?.detach()
     }
 
-    abstract fun createPresenter(): P;
+    private fun createPresenter(): P? {
+        try {
+            return pFactory?.createPresenter();
+        } catch (e: Exception) {
+        }
+        return null
+    };
 }

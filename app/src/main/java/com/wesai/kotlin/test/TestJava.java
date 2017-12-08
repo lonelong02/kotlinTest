@@ -1,24 +1,26 @@
 package com.wesai.kotlin.test;
 
 
-import android.content.Context;
-import android.support.v4.view.NestedScrollingParent;
-import android.widget.LinearLayout;
-
+import com.wesai.kotlin.mvp.BasePresenterFactory;
+import com.wesai.kotlin.mvp.IPresenterFactory;
+import com.wesai.kotlin.mvp.IPresenterInterface;
+import com.wesai.kotlin.mvp.IViewInterface;
 
 /**
  * Created by long on 2017/11/16.
  */
 
-class TestJava extends LinearLayout implements NestedScrollingParent {
+class TestJava {
+//    IPresenterFactory<V, P> p = null;
+//
+//    public void test() {
+////        var pFactory:IPresenterFactory<V, P> =BasePresenterFactory.getFactory(javaClass);
+//
+//        p = BasePresenterFactory.getFactory(getClass());
+//    }
+//
+//    public P getP() {
+//        return p.createPresenter();
+//    }
 
-    public TestJava(Context context) {
-        super(context);
-        t(null);
-
-    }
-
-    public <T> void t(Class<T> mClass) {
-
-    }
 }

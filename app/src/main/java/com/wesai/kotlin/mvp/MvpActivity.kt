@@ -8,6 +8,7 @@ import kotlinx.android.synthetic.main.activity_mvp.*
 /**
  * Created by long on 2017/12/7.
  */
+@CreatePresenter(PresenterImpl1::class)
 class MvpActivity : IBaseMVPActivity<IViewImpl1, PresenterImpl1>(), IViewImpl1 {
     override fun setViewData(data: String) {
         dataView.setText(data)
@@ -20,11 +21,11 @@ class MvpActivity : IBaseMVPActivity<IViewImpl1, PresenterImpl1>(), IViewImpl1 {
     }
 
     fun myOnClick(view: View) {
-        presenter.requestData()
+        presenter?.requestData()
     }
 
 
-    override fun createPresenter(): PresenterImpl1 {
+    fun createPresenter(): PresenterImpl1 {
         return PresenterImpl1()
     }
 
