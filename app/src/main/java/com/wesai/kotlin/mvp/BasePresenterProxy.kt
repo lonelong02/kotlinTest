@@ -7,45 +7,47 @@ import android.os.Bundle
  */
 class BasePresenterProxy<V : IViewInterface, P : IPresenterInterface<V>> : IPresenterProxy<V, P> {
 
-    var factory: IPresenterFactory<V, P>;
-    var presenter: P? = null;
+    private var factory: IPresenterFactory<V, P>?;
+    private var presenter: P? = null;
 
 
-    constructor(factory: IPresenterFactory<V, P>) {
+    constructor(factory: IPresenterFactory<V, P>?) {
         this.factory = factory;
-        presenter = getPresenterImpl();
     }
 
     override fun setPresenterFactory(factory: IPresenterFactory<V, P>) {
         this.factory = factory;
     }
 
-    override fun getFractory(): IPresenterFactory<V, P> {
+    override fun getFractory(): IPresenterFactory<V, P>? {
         return factory;
     }
 
     override fun getPresenterImpl(): P? {
-        return if (presenter != null) presenter else factory?.createPresenter();
+        if (presenter == null) {
+            presenter = factory?.createPresenter();
+        }
+        return presenter
     }
 
     /**
      * 保存数据
      */
     fun onSaveInstanceState(bundle: Bundle?) {
-        presenter?.onSaveInstanceState(bundle)
+        getPresenterImpl()?.onSaveInstanceState(bundle)
     }
 
     /**
      * 注册
      */
     fun attachIView(iView: V) {
-        presenter?.attachIView(iView)
+        getPresenterImpl()?.attachIView(iView)
     }
 
     /**
      * 解注册
      */
     fun detach() {
-        presenter?.detach()
+        getPresenterImpl()?.detach()
     }
 }

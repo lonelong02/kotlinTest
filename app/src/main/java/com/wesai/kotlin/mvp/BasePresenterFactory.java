@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
  * Created by long on 2017/11/16.
  */
 
-public class BasePresenterFactory<V extends IViewInterface, P extends IPresenterInterface<V>> implements IPresenterFactory {
+public class BasePresenterFactory<V extends IViewInterface, P extends IPresenterInterface<V>> implements IPresenterFactory{
 
     private Class<P> pClass;
 

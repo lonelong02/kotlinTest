@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
     fun testStatic() {
         var testJava = StaticClass.Tag
         StaticClass.fun1()
