@@ -11,6 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
+import com.wesai.kotlin.modules.CornerView
+import com.wesai.kotlin.utils.SSLDeviceUtil
 
 /**
  * Created by long on 2017/11/30.
@@ -27,6 +29,38 @@ class SuspendService : Service() {
     /*Service的onCreate方法*/
     override fun onCreate() {
         super.onCreate()
+//        addSuspend1();
+        addRoundSuspend();
+
+    }
+
+    /**
+     * 圆角
+     */
+    private fun addRoundSuspend() {
+        var wService = getSystemService(Context.WINDOW_SERVICE) as WindowManager;
+        var view = CornerView(this)
+        var params = WindowManager.LayoutParams();
+        params.type = WindowManager.LayoutParams.TYPE_TOAST;
+        params.flags = (WindowManager.LayoutParams.FLAG_FULLSCREEN
+                or WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+                or WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION
+                or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+                or WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+                or WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE)
+        params.format = 1
+        params.x = 0
+        params.y = 0
+
+        params.width = SSLDeviceUtil.getWindowWidth(this)
+        params.height = SSLDeviceUtil.getWindowHeight(this) + SSLDeviceUtil.getNavigationBarHeight(this)
+        wService.addView(view, params);
+    }
+
+    /**
+     * 普通的悬浮窗
+     */
+    fun addSuspend1() {
         var winService = getSystemService(Context.WINDOW_SERVICE) as WindowManager;
         var view = View(this);
         view.setBackgroundColor(Color.GREEN);
@@ -51,6 +85,4 @@ class SuspendService : Service() {
         //添加显示
         winService.addView(view, params);
     }
-
-
 }

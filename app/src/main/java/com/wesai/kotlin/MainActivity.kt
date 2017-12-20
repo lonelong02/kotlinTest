@@ -21,6 +21,7 @@ import com.wesai.kotlin.bean.Person
 import com.wesai.kotlin.bean.Student
 import com.wesai.kotlin.greenDao.GreenDaoFactory
 import com.wesai.kotlin.greenDao.GreenJava
+import com.wesai.kotlin.iterator.Test1
 import com.wesai.kotlin.mvp.MvpActivity
 import com.wesai.kotlin.services.SuspendService
 import com.wesai.kotlin.test.StaticClass
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "计算为：" + sun(1, 2), Toast.LENGTH_LONG).show();
 //            range();
 //            newClass();
-            testArray();
+//            testArray();
 //            extendObject()
 //            interClass();
 //            testOther();
@@ -45,7 +46,17 @@ class MainActivity : AppCompatActivity() {
 //            testStatic();
 //            testParams(like = "喜欢", name = "long")
 //            scrollTest();
+            iterator();
         })
+    }
+
+    /**
+     * 循环
+     */
+    fun iterator() {
+        var t1 = Test1();
+        t1.main();
+
     }
 
     /**
@@ -54,7 +65,6 @@ class MainActivity : AppCompatActivity() {
     fun scrollTest() {
         but7.scrollBy(10, -10);
     }
-
 
 
     fun testStatic() {

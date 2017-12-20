@@ -26,7 +26,6 @@ open class IBaseMVPActivity<V : IViewInterface, P : IPresenterInterface<V>> : Ap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onResume() {
