@@ -26,7 +26,7 @@ android {
 
 
 greendao {
-    schemaVersion 10
+    schemaVersion 1
     daoPackage "com.wesai.kotlin.greenDao"
     targetGenDir 'src/main/java'
 }
@@ -42,10 +42,11 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    compileOnly 'org.greenrobot:greendao:3.2.2'
+
+    api 'org.greenrobot:greendao:3.2.2'
     // add library
     /*RxJava2*/
     implementation 'io.reactivex.rxjava2:rxjava:2.1.6'
-     /*阿里so*/
+    /*阿里so*/
     compile 'com.aliyun.ams:alicloud-android-hotfix:3.1.6'
 }

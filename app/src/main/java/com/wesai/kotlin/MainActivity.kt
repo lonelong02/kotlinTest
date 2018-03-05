@@ -99,8 +99,8 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.but6 -> {
 //                startActivity(Intent(this, CoordinatorLayoutActivity::class.java))
-//                startActivity(Intent(this, BottomSheetBehaviorActivity::class.java))
-                startActivity(Intent(this, NestedScrollActivity::class.java))
+                startActivity(Intent(this, BottomSheetBehaviorActivity::class.java))
+//                startActivity(Intent(this, NestedScrollActivity::class.java))
             }
 
             R.id.but7 -> {
@@ -115,6 +115,12 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.but12 -> {
                 startActivity(Intent(this, MvpActivity::class.java))
+            }
+            R.id.but14 -> {
+                startActivity(Intent(this, AdaptiveActivity::class.java))
+            }
+            R.id.but15 -> {
+                startActivity(Intent(this, PullActivity::class.java))
             }
 
         }

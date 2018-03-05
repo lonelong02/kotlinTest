@@ -99,5 +99,23 @@
             android:onClick="myOnClick"
             android:text="自建MVP"
             android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/but14"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:onClick="myOnClick"
+            android:text="适配"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/but15"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:onClick="myOnClick"
+            android:text="微信下拉"
+            android:textAllCaps="false" />
     </LinearLayout>
 </ScrollView>

@@ -4,8 +4,10 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.content.res.Configuration
+import android.graphics.Point
 import android.os.Bundle
 import android.util.Log
+import android.view.WindowManager
 import com.taobao.sophix.PatchStatus
 import com.taobao.sophix.SophixManager
 
@@ -56,6 +58,7 @@ class AppApplication() : Application() {
         super.onCreate()
         SophixManager.getInstance().queryAndLoadNewPatch();
         instance = this;
+        resetDensity(this, 1334.0f);
         countActivity();
     }
 
@@ -113,9 +116,25 @@ class AppApplication() : Application() {
             }
 
             override fun onActivityCreated(activity: Activity?, savedInstanceState: Bundle?) {
+                //所有机型适配;思路：重新设置DisplayMetrics.xdpi的属性（TypedValue.applyDimension方法）；
+                if (activity != null)
+                    resetDensity(activity, 1080.0f);
             }
 
         })
+    }
+
+
+    /**
+     * 重新设置
+     * 所有机型适配;思路：重新设置DisplayMetrics.xdpi的属性（TypedValue.applyDimension方法）；
+     */
+    fun resetDensity(context: Context, designWidth: Float) {
+        //value * metrics.xdpi * (1.0f/72);
+        var size = Point()
+        var wManager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        wManager.defaultDisplay.getSize(size)
+        context.resources.displayMetrics.xdpi = size.x / designWidth * 72;
     }
 
 

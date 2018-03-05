@@ -30,6 +30,7 @@ class CornerView : View {
 
 
     private fun init() {
+
         paint.alpha = opacity
         paint.style = Paint.Style.FILL
         paint.isAntiAlias = true //抗锯齿
