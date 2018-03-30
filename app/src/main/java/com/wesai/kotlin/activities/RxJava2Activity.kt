@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.View
 import com.wesai.kotlin.BaseActivity
 import com.wesai.kotlin.R
-import io.reactivex.*
+import io.reactivex.BackpressureStrategy
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import io.reactivex.functions.BiFunction
 import io.reactivex.schedulers.Schedulers
-import java.util.*
 
 class RxJava2Activity : BaseActivity() {
 

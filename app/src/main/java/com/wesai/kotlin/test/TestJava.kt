@@ -1,11 +1,6 @@
 package com.wesai.kotlin.test
 
 
-import com.wesai.kotlin.mvp.BasePresenterFactory
-import com.wesai.kotlin.mvp.IPresenterFactory
-import com.wesai.kotlin.mvp.IPresenterInterface
-import com.wesai.kotlin.mvp.IViewInterface
-
 /**
  * Created by long on 2017/11/16.
  */

@@ -4,16 +4,16 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.graphics.Color
 import android.graphics.Path
+import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
+import android.view.Gravity
 import android.view.View
+import android.widget.TextView
+import com.long.common.viewpager.TypeCall
 import com.wesai.kotlin.BaseActivity
 import com.wesai.kotlin.R
 import kotlinx.android.synthetic.main.activity_anim.*
-import android.os.Build
-import android.support.annotation.RequiresApi
-import android.view.Gravity
-import android.widget.TextView
-import com.long.common.viewpager.TypeCall
 
 
 class AnimAndViewsActivity : BaseActivity() {

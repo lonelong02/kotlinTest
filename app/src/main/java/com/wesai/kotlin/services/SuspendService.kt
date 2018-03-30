@@ -8,7 +8,6 @@ import android.os.Binder
 import android.os.IBinder
 import android.view.Gravity
 import android.view.View
-import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
 import com.wesai.kotlin.modules.CornerView

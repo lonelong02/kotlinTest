@@ -1,6 +1,5 @@
 package com.wesai.kotlin.mvp
 
-import android.graphics.Point
 import android.os.Bundle
 import android.view.View
 import com.wesai.kotlin.R

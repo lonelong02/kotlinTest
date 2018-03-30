@@ -1,6 +1,8 @@
 package com.wesai.kotlin.modules
 
-import android.animation.*
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
+import android.animation.TypeEvaluator
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet

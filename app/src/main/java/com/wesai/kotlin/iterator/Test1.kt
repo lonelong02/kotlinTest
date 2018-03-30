@@ -1,7 +1,6 @@
 package com.wesai.kotlin.iterator
 
 import android.util.Log
-import java.util.*
 
 /**
  * Created by long

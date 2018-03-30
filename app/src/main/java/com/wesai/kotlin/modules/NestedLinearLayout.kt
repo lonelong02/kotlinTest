@@ -2,16 +2,12 @@ package com.wesai.kotlin.modules
 
 import android.content.Context
 import android.support.v4.view.NestedScrollingParent
-import android.support.v4.view.NestedScrollingParentHelper
 import android.support.v4.view.ViewCompat
-import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
-import android.view.WindowManager
 import android.widget.LinearLayout
 import com.wesai.kotlin.R
-import kotlinx.android.synthetic.main.item_list_content.view.*
 
 /**
  * Created by long on 2017/11/30.

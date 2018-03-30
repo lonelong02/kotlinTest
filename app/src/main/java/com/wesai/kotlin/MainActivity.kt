@@ -23,7 +23,6 @@ import com.wesai.kotlin.greenDao.GreenDaoFactory
 import com.wesai.kotlin.greenDao.GreenJava
 import com.wesai.kotlin.iterator.Test1
 import com.wesai.kotlin.mvp.MvpActivity
-import com.wesai.kotlin.services.SuspendService
 import com.wesai.kotlin.test.StaticClass
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.Executors
@@ -110,8 +109,9 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this, AnimAndViewsActivity::class.java))
             }
             R.id.but10 -> {
-                startService(Intent(this, SuspendService::class.java));
+//                startService(Intent(this, SuspendService::class.java));
 //                alter();
+                testToast();
             }
             R.id.but12 -> {
                 startActivity(Intent(this, MvpActivity::class.java))
@@ -124,6 +124,13 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+
+    }
+    fun testToast(){
+        //验证个toast bug
+        //http://mp.weixin.qq.com/s/r8wlKaNsWdffGxuGkpoXbQ
+        Toast.makeText(this,"toast测试",Toast.LENGTH_SHORT).show();
+        Thread.sleep(5000);
 
     }
 

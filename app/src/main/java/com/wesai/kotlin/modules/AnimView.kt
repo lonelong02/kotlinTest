@@ -1,6 +1,5 @@
 package com.wesai.kotlin.modules
 
-import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
