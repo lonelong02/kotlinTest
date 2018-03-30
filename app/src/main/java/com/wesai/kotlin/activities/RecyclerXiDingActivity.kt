@@ -53,12 +53,13 @@ class RecyclerXiDingActivity : BaseActivity() {
             override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy);
                 var layoutManager = recyclerView?.layoutManager as LinearLayoutManager;
-                var first=layoutManager.findFirstVisibleItemPosition();
-                var last = layoutManager.findLastVisibleItemPosition();
+                var first = layoutManager.findFirstVisibleItemPosition(); //获取第一个当前可见的View的position
+//                   layoutManager.findFirstCompletelyVisibleItemPosition() //获取第一个当前完全可见的View的position
+                var last = layoutManager.findLastVisibleItemPosition();//获取最后一个可见的View的position
 
-                Log.e("myDebug","first=${first} last=${last}")
+                Log.e("myDebug", "first=${first} last=${last}")
 
-                for(index in first..last){
+                for (index in first downTo 0) { //倒序
                     var row = mData.get(index);
                     if ((row.get("isTitle") as Boolean)) {
                         titleView.setText(row.get("value").toString());
