@@ -56,6 +56,9 @@
         <activity
             android:name=".activities.NestedScrollActivity"
             android:theme="@style/NoTitleAppTheme" />
+        <activity
+            android:name=".activities.RecyclerXiDingActivity"
+            android:theme="@style/NoTitleAppTheme" />
 
         <activity
             android:name=".activities.BottomSheetBehaviorActivity"

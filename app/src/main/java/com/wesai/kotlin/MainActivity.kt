@@ -122,6 +122,9 @@ class MainActivity : AppCompatActivity() {
             R.id.but15 -> {
                 startActivity(Intent(this, PullActivity::class.java))
             }
+            R.id.but16 -> {
+                startActivity(Intent(this, RecyclerXiDingActivity::class.java))
+            }
 
         }
 

@@ -117,5 +117,13 @@
             android:onClick="myOnClick"
             android:text="微信下拉"
             android:textAllCaps="false" />
+        <Button
+            android:id="@+id/but16"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:onClick="myOnClick"
+            android:text="通讯录吸顶"
+            android:textAllCaps="false" />
     </LinearLayout>
 </ScrollView>
